@@ -1,0 +1,14 @@
+name: Ci
+run-name: Build and run App
+on: [ push ]
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+      - run: ./gradlew build bootRun
