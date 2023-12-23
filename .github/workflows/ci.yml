@@ -7,12 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
-        env:
-          STRAVA_EMAIL: ${{secrets.STRAVA_EMAIL}}
-          STRAVA_PASSWORD: ${{secrets.STRAVA_PASSWORD}}
-          STRAVA_DELAY: ${{secrets.STRAVA_DELAY}}
         with:
           distribution: 'temurin'
           java-version: '21'
           cache: 'gradle'
-      - run: ./gradlew build bootRun
+      - name: Running app
+        run: ./gradlew build bootRun
+        env:
+          STRAVA_EMAIL: ${{secrets.STRAVA_EMAIL}}
+          STRAVA_PASSWORD: ${{secrets.STRAVA_PASSWORD}}
+          STRAVA_DELAY: ${{secrets.STRAVA_DELAY}}
+
