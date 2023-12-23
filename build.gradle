@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.1'
+    id 'io.spring.dependency-management' version '1.1.4'
+//    id 'org.graalvm.buildtools.native' version '0.9.28'
+}
+
+group = 'dev.rnvo'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = 21
+    targetCompatibility = 21
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation "com.microsoft.playwright:playwright:$playwrightVersion"
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+
+//graalvmNative {
+//    toolchainDetection = true
+//
+//    binaries {
+//        main {
+//            javaLauncher = javaToolchains.launcherFor {
+//                languageVersion = JavaLanguageVersion.of(21)
+//            }
+//        }
+//    }
+//}
