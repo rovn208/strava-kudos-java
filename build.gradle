@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'dev.rnvo'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
     sourceCompatibility = 21
@@ -46,6 +46,7 @@ tasks.named('test') {
 //            javaLauncher = javaToolchains.launcherFor {
 //                languageVersion = JavaLanguageVersion.of(21)
 //            }
+//            configurationFileDirectories.from(file("src/main/resources"))
 //        }
 //    }
 //}

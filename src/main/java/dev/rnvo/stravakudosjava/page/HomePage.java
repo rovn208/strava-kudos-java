@@ -35,13 +35,13 @@ public class HomePage {
 
     public void refreshPage() {
         log.info("Refreshing the page");
-        page.reload(new ReloadOptions().setWaitUntil(WaitUntilState.DOMCONTENTLOADED));
+        page.reload(new ReloadOptions().setWaitUntil(WaitUntilState.LOAD));
     }
 
     public void kudosNewFeeds() {
         validateHomePage();
-        getProfileId();
         scrollDown(2);
+        getProfileId();
 
         var nfActivities = page.locator(webFeedEntry);
         AtomicInteger givenKudos = new AtomicInteger();
@@ -89,7 +89,7 @@ public class HomePage {
             }
             isLoggedIn = true;
             page = loginPage.getPage();
-            page.waitForURL("https://www.strava.com/dashboard");
+            refreshPage();
         }
     }
 

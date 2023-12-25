@@ -12,7 +12,7 @@ jobs:
           java-version: '21'
           cache: 'gradle'
       - name: Running app
-        run: ./gradlew build bootRun
+        run: ./gradlew build
         env:
           STRAVA_EMAIL: ${{secrets.STRAVA_EMAIL}}
           STRAVA_PASSWORD: ${{secrets.STRAVA_PASSWORD}}
